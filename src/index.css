@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Let Lenis control smoothness (avoid double smoothing) */
+html { scroll-behavior: auto; }
+
+/* Prevent scroll chaining / rubber-band between pages */
+html, body { 
+  overscroll-behavior-y: none; 
+  touch-action: pan-y; 
+  /* Improve mobile performance */
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+:root { --split-dur: 0.36s; }
+
+body {
+  @apply bg-background text-primary font-orbitron;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Modal lock */
+body.modal-open { overflow: hidden; overscroll-behavior: contain; }
+@supports (-webkit-overflow-scrolling: touch) {
+  body.modal-open { position: fixed; width: 100%; }
+}
+
+/* Focus styles */
+*:focus-visible {
+  outline: 2px solid #A0A0A0;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+body:not(.user-is-tabbing) *:focus-visible { outline: none; }
+
+/* ===========================
+   Split Transition Overlay
+   =========================== */
+
+.split-top,
+.split-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50%;
+  will-change: transform;
+  pointer-events: none; /* don't block clicks */
+}
+
+/* Start positions */
+.split-top { top: 0; transform: translateY(-100%); }
+.split-bottom { bottom: 0; transform: translateY(100%); }
+
+/* Branded gradients (Grey) */
+.split-gradient-top    { background: linear-gradient(180deg, #2a2a2a 0%, #121212 100%); }
+.split-gradient-bottom { background: linear-gradient(  0deg, #2a2a2a 0%, #121212 100%); }
+
+/* Subtle inner shadows so mid-frame feels intentional */
+.split-top    { box-shadow: inset 0 -24px 48px -24px rgba(0,0,0,.45); }
+.split-bottom { box-shadow: inset 0  24px 48px -24px rgba(0,0,0,.45); }
+
+/* Panels slide to meet in the middle (cover) */
+@keyframes splitCoverTop    { from { transform: translateY(-100%);} to { transform: translateY(0%);} }
+@keyframes splitCoverBottom { from { transform: translateY( 100%);} to { transform: translateY(0%);} }
+
+/* Panels slide back out (reveal) */
+@keyframes splitRevealTop    { from { transform: translateY(0%);} to { transform: translateY(-100%);} }
+@keyframes splitRevealBottom { from { transform: translateY(0%);} to { transform: translateY( 100%);} }
+
+/* During enter (cover) */
+body.split-in .split-top    { animation: splitCoverTop    var(--split-dur) cubic-bezier(0.65,0,0.35,1) forwards; }
+body.split-in .split-bottom { animation: splitCoverBottom var(--split-dur) cubic-bezier(0.65,0,0.35,1) forwards; }
+
+/* During leave (reveal) */
+body.split-out .split-top    { animation: splitRevealTop    var(--split-dur) cubic-bezier(0.65,0,0.35,1) forwards; }
+body.split-out .split-bottom { animation: splitRevealBottom var(--split-dur) cubic-bezier(0.65,0,0.35,1) forwards; }
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  body.split-in .split-top,
+  body.split-in .split-bottom,
+  body.split-out .split-top,
+  body.split-out .split-bottom {
+    animation: none !important;
+    transform: translateY(0) !important;
+  }
+}
+
+/* ===========================
+   Utilities
+   =========================== */
+
+/* Hide scrollbar UI but keep scroll behavior (use with overflow-y-auto) */
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Fade + disable header while a modal is open (Whitepaper/Contact) */
+body.modal-open #site-header {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .2s ease;
+}
+
+/* --- No-peek: fade page content during split (keeps header clickable) --- */
+main { transition: opacity var(--split-dur) ease; }
+body.split-in main,
+body.split-out main {
+  opacity: 0;
+  pointer-events: none; /* avoid accidental clicks mid-transition */
+}
+
+/* ===========================
+   Mobile Optimizations
+   =========================== */
+
+/* Better touch targets for mobile */
+@media (max-width: 640px) {
+  button, a {
+    min-height: 44px; /* iOS recommended touch target size */
+    min-width: 44px;
+  }
+  
+  /* Improve text rendering on mobile */
+  body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  /* Prevent zoom on input focus */
+  input, textarea, select {
+    font-size: 16px;
+  }
+}
+
+/* Improve performance on mobile devices */
+@media (max-width: 768px) {
+  * {
+    /* Enable hardware acceleration for smoother animations */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  /* Reduce motion for better performance on low-end devices */
+  @media (prefers-reduced-motion: reduce) {
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* Safe area handling for devices with notches */
+@supports (padding: max(0px)) {
+  .safe-area-top {
+    padding-top: max(env(safe-area-inset-top), 1rem);
+  }
+  
+  .safe-area-bottom {
+    padding-bottom: max(env(safe-area-inset-bottom), 1rem);
+  }
+  
+  .safe-area-left {
+    padding-left: max(env(safe-area-inset-left), 1rem);
+  }
+  
+  .safe-area-right {
+    padding-right: max(env(safe-area-inset-right), 1rem);
+  }
+}
