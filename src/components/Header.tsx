@@ -26,22 +26,8 @@ const Header: React.FC<HeaderProps> = ({ onOpenWhitepaper, onOpenContact, onOpen
           'transition-all duration-350 ease-in-out-custom'
         )}
       >
-        {/* LEFT: Mobile Menu Button (visible only on mobile) */}
-        <div className="sm:hidden">
-          <button
-            type="button"
-            onClick={onOpenMobileMenu}
-            aria-label="Open Menu"
-            className="group relative inline-flex items-center justify-center w-10 h-10 rounded-lg text-muted/80 transition-all duration-200 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 active:scale-95"
-          >
-            <span className="absolute inset-0 -z-10 rounded-lg bg-white/10 opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-105 group-hover:bg-white/15" />
-            {isMobileMenuOpen ? (
-              <X className="h-5 w-5" />
-            ) : (
-              <Plus className="h-5 w-5" />
-            )}
-          </button>
-        </div>
+        {/* LEFT: Spacer for mobile (to balance the layout) */}
+        <div className="sm:hidden w-10"></div>
 
         {/* LEFT: Desktop Navigation (hidden on mobile) */}
         <nav className="hidden sm:flex items-center gap-2 md:gap-4 lg:gap-6" role="navigation" aria-label="Primary">
@@ -77,18 +63,38 @@ const Header: React.FC<HeaderProps> = ({ onOpenWhitepaper, onOpenContact, onOpen
           </a>
         </div>
 
-        {/* RIGHT: About Us (hidden on mobile) */}
-        <nav className="hidden sm:block ml-auto" role="navigation" aria-label="Secondary">
-          <button
-            type="button"
-            onClick={onOpenAbout}
-            aria-label="About Us"
-            className="group relative inline-flex items-center uppercase tracking-[0.2em] md:tracking-[0.25em] text-[11px] md:text-[13px] text-muted/80 transition-all duration-200 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-lg hover:-translate-y-0.5 active:scale-95"
-          >
-            <span className="absolute inset-0 -z-10 rounded-md bg-white/10 opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-105 group-hover:bg-white/15 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)]" />
-            <span className="px-3 py-2.5 md:px-4 md:py-3 lg:px-6 lg:py-3">ABOUT US</span>
-          </button>
-        </nav>
+        {/* RIGHT: Mobile Menu Button (visible only on mobile) + Desktop About Us */}
+        <div className="ml-auto flex items-center">
+          {/* Mobile Menu Button */}
+          <div className="sm:hidden">
+            <button
+              type="button"
+              onClick={onOpenMobileMenu}
+              aria-label="Open Menu"
+              className="group relative inline-flex items-center justify-center w-10 h-10 rounded-lg text-muted/80 transition-all duration-200 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 active:scale-95"
+            >
+              <span className="absolute inset-0 -z-10 rounded-lg bg-white/10 opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-105 group-hover:bg-white/15" />
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Plus className="h-5 w-5" />
+              )}
+            </button>
+          </div>
+          
+          {/* Desktop About Us */}
+          <nav className="hidden sm:block" role="navigation" aria-label="Secondary">
+            <button
+              type="button"
+              onClick={onOpenAbout}
+              aria-label="About Us"
+              className="group relative inline-flex items-center uppercase tracking-[0.2em] md:tracking-[0.25em] text-[11px] md:text-[13px] text-muted/80 transition-all duration-200 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-white/30 rounded-lg hover:-translate-y-0.5 active:scale-95"
+            >
+              <span className="absolute inset-0 -z-10 rounded-md bg-white/10 opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-105 group-hover:bg-white/15 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)]" />
+              <span className="px-3 py-2.5 md:px-4 md:py-3 lg:px-6 lg:py-3">ABOUT US</span>
+            </button>
+          </nav>
+        </div>
       </header>
     </>
   )
