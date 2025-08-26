@@ -16,6 +16,7 @@ function App() {
   const [contactOpen, setContactOpen] = React.useState(false)
   const [aboutOpen, setAboutOpen] = React.useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
+  const [currentPage, setCurrentPage] = React.useState(0)
 
   const lenisRef = useRef<Lenis | null>(null)
   const isAnimatingRef = useRef(false)
@@ -65,6 +66,7 @@ function App() {
 
     isAnimatingRef.current = true
     pageIndexRef.current = idx
+    setCurrentPage(idx)
 
     const SPLIT_MS = 360
     const target = targetTopForIndex(idx)
@@ -77,7 +79,7 @@ function App() {
       easing: (t: number) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2),
     })
 
-    const deadline = performance.now() + 1800
+    const deadline = performance.now() + 700  // Wait max 0.7 seconds instead of 1.8 seconds
     const settle = () => {
       const diff = Math.abs(window.scrollY - target)
       if (diff <= 1 || performance.now() > deadline) {
@@ -197,10 +199,27 @@ function App() {
     let snapTimer: number | null = null
     const onScroll = () => {
       if (modalOpenRef.current || isAnimatingRef.current) return
+      
+      // Simple page detection: if we're closer to bottom, we're on page 1
+      const sections = findSections()
+      if (sections.length !== 2) return // Ensure we only have 2 sections
+      
+      const scrollY = window.scrollY
+      const viewportHeight = window.innerHeight
+      const totalHeight = document.documentElement.scrollHeight
+      
+      // If we're in the bottom half of the scrollable area, we're on page 1
+      const currentIdx = scrollY > (totalHeight - viewportHeight) / 2 ? 1 : 0
+      
+      if (currentIdx !== pageIndexRef.current) {
+        pageIndexRef.current = currentIdx
+        setCurrentPage(currentIdx)
+      }
+      
       if (snapTimer) window.clearTimeout(snapTimer)
       snapTimer = window.setTimeout(() => {
-        const d0 = Math.abs(window.scrollY - targetTopForIndex(0))
-        const d1 = Math.abs(window.scrollY - targetTopForIndex(1))
+        const d0 = Math.abs(scrollY - targetTopForIndex(0))
+        const d1 = Math.abs(scrollY - targetTopForIndex(1))
         const idx = d1 < d0 ? 1 : 0
         if (!atPos(idx)) goToIndex(idx, 0.75)
       }, 100)
@@ -230,14 +249,11 @@ function App() {
     }
   }, [])
 
-  // Initialize to nearest page on mount
+  // Initialize to page 0 on mount (always start at the first page)
   useEffect(() => {
-    const t0 = targetTopForIndex(0)
-    const t1 = targetTopForIndex(1)
-    const mid = (t0 + t1) / 2
-    const idx = window.scrollY >= mid ? 1 : 0
-    pageIndexRef.current = idx
-    window.scrollTo({ top: idx === 0 ? t0 : t1, left: 0, behavior: 'auto' })
+    pageIndexRef.current = 0
+    setCurrentPage(0)
+    window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
   }, [])
 
   return (
@@ -247,6 +263,44 @@ function App() {
         <div className="split-top split-gradient-top" />
         <div className="split-bottom split-gradient-bottom" />
       </div>
+
+      {/* Subtle Scroll Indicators - Right Side */}
+      <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-[997] pointer-events-none">
+        <div className="flex flex-col space-y-3">
+          {/* Page 1 Indicator */}
+          <button
+            onClick={() => goToIndex(0)}
+            className={`pointer-events-auto w-2 h-8 rounded-full transition-all duration-300 ${
+              currentPage === 0
+                ? 'bg-white shadow-lg shadow-white/20'
+                : 'bg-white/20 hover:bg-white/40'
+            }`}
+            aria-label="Go to page 1"
+          />
+          
+          {/* Page 2 Indicator */}
+          <button
+            onClick={() => goToIndex(1)}
+            className={`pointer-events-auto w-2 h-8 rounded-full transition-all duration-300 ${
+              currentPage === 1
+                ? 'bg-white shadow-lg shadow-white/20'
+                : 'bg-white/20 hover:bg-white/40'
+            }`}
+            aria-label="Go to page 2"
+          />
+        </div>
+      </div>
+
+      {/* Subtle Scroll Hint - Bottom Center (only on page 1) */}
+      {currentPage === 0 && (
+        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-[997] pointer-events-none">
+          <div className="flex flex-col items-center space-y-2 text-white/40">
+            <div className="w-px h-8 bg-gradient-to-b from-transparent via-white/40 to-transparent" />
+            <div className="w-1 h-1 bg-white/40 rounded-full animate-pulse" />
+          </div>
+        </div>
+      )}
+
 
       <Header
         onOpenWhitepaper={() => setWhitepaperOpen(true)}
@@ -263,10 +317,8 @@ function App() {
 
       {/* MAIN: no z-index so header sits above it */}
       <main className="relative">
-        {/* Page 1 */}
-        <section id="hero" data-snap className="relative min-h-screen">
-          <HeroSection />
-        </section>
+        {/* Page 1 - HeroSection has its own section tag with data-snap */}
+        <HeroSection />
 
         {/* Page 2 */}
         <section id="countdown-footer" data-snap className="min-h-screen flex flex-col px-4 md:px-8 lg:px-16">

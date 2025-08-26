@@ -16,6 +16,15 @@ html, body {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  /* Hide scrollbar but keep scroll functionality */
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Hide scrollbar for webkit browsers */
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
 }
 
 :root { --split-dur: 0.36s; }
@@ -58,13 +67,13 @@ body:not(.user-is-tabbing) *:focus-visible { outline: none; }
 .split-top { top: 0; transform: translateY(-100%); }
 .split-bottom { bottom: 0; transform: translateY(100%); }
 
-/* Branded gradients (Grey) */
-.split-gradient-top    { background: linear-gradient(180deg, #2a2a2a 0%, #121212 100%); }
-.split-gradient-bottom { background: linear-gradient(  0deg, #2a2a2a 0%, #121212 100%); }
+/* Branded gradients (Grey) - Semi-transparent for visual continuity */
+.split-gradient-top    { background: linear-gradient(180deg, rgba(42, 42, 42, 0.3) 0%, rgba(18, 18, 18, 0.4) 100%) !important; }
+.split-gradient-bottom { background: linear-gradient(  0deg, rgba(42, 42, 42, 0.3) 0%, rgba(18, 18, 18, 0.4) 100%) !important; }
 
-/* Subtle inner shadows so mid-frame feels intentional */
-.split-top    { box-shadow: inset 0 -24px 48px -24px rgba(0,0,0,.45); }
-.split-bottom { box-shadow: inset 0  24px 48px -24px rgba(0,0,0,.45); }
+/* Subtle inner shadows so mid-frame feels intentional - Removed for maximum transparency */
+.split-top    { box-shadow: none !important; }
+.split-bottom { box-shadow: none !important; }
 
 /* Panels slide to meet in the middle (cover) */
 @keyframes splitCoverTop    { from { transform: translateY(-100%);} to { transform: translateY(0%);} }
