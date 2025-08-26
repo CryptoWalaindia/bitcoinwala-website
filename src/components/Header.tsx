@@ -75,9 +75,9 @@ const Header: React.FC<HeaderProps> = ({ onOpenWhitepaper, onOpenContact, onOpen
             >
               <span className="absolute inset-0 -z-10 rounded-lg bg-white/10 opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-105 group-hover:bg-white/15" />
               {isMobileMenuOpen ? (
-                <X className="h-5 w-5" />
+                <X className="h-7 w-7" />
               ) : (
-                <Plus className="h-5 w-5" />
+                <Plus className="h-7 w-7" />
               )}
             </button>
           </div>
