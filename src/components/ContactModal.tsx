@@ -15,6 +15,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
   const firstInputRef = useRef<HTMLInputElement | null>(null)
   const [audience, setAudience] = useState<AudienceType>('individual')
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   // Close on ESC
   useEffect(() => {
@@ -32,6 +33,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
       setTimeout(() => firstInputRef.current?.focus(), 10)
     } else {
       setSubmitted(false)
+      setIsSubmitting(false)
       setAudience('individual')
     }
   }, [open])
@@ -39,7 +41,14 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
   // Simple submit handler (replace with webhook later)
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    setSubmitted(true)
+    setIsSubmitting(true)
+    
+    // Add delay before showing thank you message
+    setTimeout(() => {
+      setIsSubmitting(false)
+      setSubmitted(true)
+    }, 1500) // 1.5 second delay
+    
     // TODO: send to webhook / email here
   }
 
@@ -154,12 +163,17 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
         </button>
 
         {/* Title */}
-        <h2
-          id="contact-title"
-          className="mb-7 text-center text-[22px] sm:text-[24px] font-semibold tracking-[0.22em] uppercase"
-        >
-          Join the New Standard
-        </h2>
+        <div className="mb-7 text-center">
+          <h2
+            id="contact-title"
+            className="text-[22px] sm:text-[24px] font-semibold tracking-[0.22em] uppercase text-[#F97316]"
+          >
+            Join
+          </h2>
+          <p className="text-[18px] sm:text-[20px] font-medium tracking-[0.18em] uppercase text-[#F97316] mt-1">
+            The New Standard
+          </p>
+        </div>
 
         {/* Success state */}
         {submitted ? (
@@ -173,6 +187,15 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
             >
               Close
             </button>
+          </div>
+        ) : isSubmitting ? (
+          <div className="text-center space-y-4">
+            <div className="flex items-center justify-center">
+              <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#F97316]"></div>
+            </div>
+            <p className="text-sm text-[#A0A0A0]">
+              Processing your request...
+            </p>
           </div>
         ) : (
           <form onSubmit={onSubmit} className="space-y-5">

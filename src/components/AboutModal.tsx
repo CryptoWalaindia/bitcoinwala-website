@@ -122,7 +122,7 @@ const AboutModal: React.FC<Props> = ({ open, onClose }) => {
         <div className="px-6 sm:px-7 pt-6 pb-4 text-center border-b border-white/10">
           <h2
             id="about-title"
-            className="text-[21px] sm:text-[23px] font-semibold tracking-[0.22em] uppercase"
+            className="text-[21px] sm:text-[23px] font-semibold tracking-[0.22em] uppercase text-[#F97316]"
           >
             About Us
           </h2>
@@ -134,8 +134,8 @@ const AboutModal: React.FC<Props> = ({ open, onClose }) => {
         {/* Body (scrollable, scrollbar hidden) */}
         <div className="px-6 sm:px-7 pt-5 pb-6 space-y-6 flex-1 overflow-y-auto no-scrollbar">
           <section>
-            <div className="text-[10px] uppercase tracking-[0.08em] text-[#A0A0A0]">00</div>
-            <h3 className="mt-1 font-semibold text-[15px]">Our Foundation</h3>
+            <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">00</div>
+            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Foundation</h3>
             <p className="mt-2 leading-7 text-[#F2F2F2]/90">
               We believe Bitcoin is not just money — it is the foundation of a new financial era.
               Founded by Abrar Khan, an Emirates A380 Captain turned Bitcoin entrepreneur, BitcoinWala is built on a singular vision:
@@ -144,8 +144,8 @@ const AboutModal: React.FC<Props> = ({ open, onClose }) => {
           </section>
 
           <section>
-            <div className="text-[10px] uppercase tracking-[0.08em] text-[#A0A0A0]">01</div>
-            <h3 className="mt-1 font-semibold text-[15px]">Our Journey</h3>
+            <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">01</div>
+            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Journey</h3>
             <p className="mt-2 leading-7 text-[#F2F2F2]/90">
               Abrar has been in the crypto space actively since 2015, witnessing first-hand the rise, challenges, and unstoppable growth of Bitcoin. 
               Flying across the world as an A380 Captain gave him a global perspective on how nations, institutions, and people view money. 
@@ -154,8 +154,8 @@ const AboutModal: React.FC<Props> = ({ open, onClose }) => {
           </section>
 
           <section>
-            <div className="text-[10px] uppercase tracking-[0.08em] text-[#A0A0A0]">02</div>
-            <h3 className="mt-1 font-semibold text-[15px]">Our Movement</h3>
+            <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">02</div>
+            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Movement</h3>
             <p className="mt-2 leading-7 text-[#F2F2F2]/90">
               BitcoinWala is more than a company. It is a movement.
               We are building India's first publicly listed Bitcoin treasury, creating the simplest and safest way for Indians to gain Bitcoin exposure — 
@@ -164,8 +164,8 @@ const AboutModal: React.FC<Props> = ({ open, onClose }) => {
           </section>
 
           <section>
-            <div className="text-[10px] uppercase tracking-[0.08em] text-[#A0A0A0]">03</div>
-            <h3 className="mt-1 font-semibold text-[15px]">Our Strategy</h3>
+            <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">03</div>
+            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Strategy</h3>
             <p className="mt-2 leading-7 text-[#F2F2F2]/90">
               Our strategy is simple: Buy. Hold. Never Sell.
               With institutional-grade governance, proof of reserves, and radical transparency, we aim to hold 1 million by 2035, 
@@ -174,8 +174,8 @@ const AboutModal: React.FC<Props> = ({ open, onClose }) => {
           </section>
 
           <section>
-            <div className="text-[10px] uppercase tracking-[0.08em] text-[#A0A0A0]">04</div>
-            <h3 className="mt-1 font-semibold text-[15px]">Our Mission</h3>
+            <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">04</div>
+            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Mission</h3>
             <p className="mt-2 leading-7 text-[#F2F2F2]/90">
               This is not just about investment. It's about financial sovereignty, freedom, and building the future of money.
               Welcome to BitcoinWala. Welcome to the future.

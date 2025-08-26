@@ -125,7 +125,7 @@ const WhitepaperModal: React.FC<Props> = ({ open, onClose }) => {
         <div className="px-6 sm:px-7 pt-6 pb-4 text-center border-b border-white/10">
           <h2
             id="whitepaper-title"
-            className="text-[21px] sm:text-[23px] font-semibold tracking-[0.22em] uppercase"
+            className="text-[21px] sm:text-[23px] font-semibold tracking-[0.22em] uppercase text-[#F97316]"
           >
             Whitepaper
           </h2>
@@ -137,8 +137,8 @@ const WhitepaperModal: React.FC<Props> = ({ open, onClose }) => {
         {/* Body (scrollable, scrollbar hidden) */}
         <div className="px-6 sm:px-7 pt-5 pb-6 space-y-6 flex-1 overflow-y-auto no-scrollbar">
           <section>
-            <div className="text-[10px] uppercase tracking-[0.08em] text-[#A0A0A0]">00</div>
-            <h3 className="mt-1 font-semibold text-[15px]">Abstract</h3>
+            <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">00</div>
+            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Abstract</h3>
             <p className="mt-2 leading-7 text-[#F2F2F2]/90">
               India’s first publicly listed Bitcoin treasury company. Our mandate is singular.
               Acquire Bitcoin and hold it as the primary reserve asset on our balance sheet.
@@ -146,8 +146,8 @@ const WhitepaperModal: React.FC<Props> = ({ open, onClose }) => {
           </section>
 
           <section>
-            <div className="text-[10px] uppercase tracking-[0.08em] text-[#A0A0A0]">01</div>
-            <h3 className="mt-1 font-semibold text-[15px]">Mission</h3>
+            <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">01</div>
+            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Mission</h3>
             <p className="mt-2 leading-7 text-[#F2F2F2]/90">
               Hold 1,000,000 Bitcoin within five years. Every sat is publicly accounted,
               verifiable and audited.
@@ -155,8 +155,8 @@ const WhitepaperModal: React.FC<Props> = ({ open, onClose }) => {
           </section>
 
           <section>
-            <div className="text-[10px] uppercase tracking-[0.08em] text-[#A0A0A0]">02</div>
-            <h3 className="mt-1 font-semibold text-[15px]">Structure</h3>
+            <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">02</div>
+            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Structure</h3>
             <p className="mt-2 leading-7 text-[#F2F2F2]/90">
               Buy Bitcoin. Hold it on our balance sheet. Never sell. We use no leverage, no lending,
               no rehypothecation, and no altcoin exposure. Operating liquidity comes from equity or
