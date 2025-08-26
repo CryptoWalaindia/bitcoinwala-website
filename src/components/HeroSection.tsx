@@ -65,7 +65,7 @@ const HeroSection: React.FC = () => {
         data-snap
         className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 sm:px-8 md:px-12 lg:px-16 pt-[60px] sm:pt-[70px] md:pt-[80px]"
       >
-      <div className="w-full max-w-6xl mx-auto text-center -mt-16 sm:-mt-12 md:-mt-16">
+      <div className="w-full max-w-6xl mx-auto text-center -mt-20 sm:-mt-12 md:-mt-16">
         {/* MISSION → brighter, glow, premium gradient - Made bigger for mobile */}
         <h1
           className="
@@ -102,15 +102,16 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Bottom Edge Line stays pinned */}
-      <div className="absolute bottom-0 left-0 right-0 w-full border-t border-border py-3 sm:py-4">
+      <div className="absolute bottom-0 left-0 right-0 w-full border-t border-border py-4 sm:py-4 bg-background/80 backdrop-blur-sm">
         <div className="flex justify-center px-4">
           <span
             className="
-              text-xs sm:text-sm md:text-sm lg:text-base text-neutral-300 
+              text-sm sm:text-sm md:text-sm lg:text-base text-neutral-300 
               tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em]
               font-light uppercase transition-colors duration-300
-              hover:text-white text-center
+              hover:text-white text-center animate-fade-in-up
             "
+            style={{ animationDelay: '0.3s' }}
           >
             ‹ Stock listing soon ›
           </span>
