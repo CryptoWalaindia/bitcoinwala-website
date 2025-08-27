@@ -25,16 +25,9 @@ const HeroSection: React.FC = () => {
           perspective: 1000px;
           display: inline-block;
           vertical-align: baseline;
-          width: auto;
-          min-width: 6ch;
+          width: 8ch;
           text-align: center;
           position: relative;
-        }
-        
-        @media (min-width: 640px) {
-          .flip-container {
-            width: 8ch;
-          }
         }
         
         .flip-inner {
@@ -86,32 +79,9 @@ const HeroSection: React.FC = () => {
           MISSION
         </h1>
 
-        {/* Subtitle - responsive layout */}
-        <div className="text-muted animate-fade-in-up delay-100 px-2 sm:px-4">
-          {/* Mobile: Stack vertically */}
-          <div className="flex flex-col items-center gap-2 sm:hidden text-sm xs:text-base">
-            <div className="flex items-center gap-2">
-              <span>1 MILLION</span>
-              <span className="text-orange-500">BITCOIN</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className={`flip-container ${showYear ? 'flipped' : ''}`}>
-                <div className="flip-inner">
-                  <div className="flip-front">
-                    <span>5 YEARS</span>
-                  </div>
-                  <div className="flip-back">
-                    <span>BY 2030</span>
-                  </div>
-                </div>
-              </div>
-              <span className="text-base text-muted">•</span>
-              <span>ALL IN</span>
-            </div>
-          </div>
-          
-          {/* Tablet and up: Single line */}
-          <div className="hidden sm:flex items-center justify-center gap-3 md:gap-4 text-lg md:text-xl lg:text-2xl tracking-wide md:tracking-widest">
+        {/* Subtitle in single line */}
+        <div className="text-muted text-base xs:text-lg sm:text-lg md:text-xl lg:text-2xl tracking-wide sm:tracking-widest animate-fade-in-up delay-100">
+          <div className="flex items-center justify-center gap-2 xs:gap-3 sm:gap-4 whitespace-nowrap">
             <span>1 MILLION</span>
             <span className="text-orange-500">BITCOIN</span>
             <div className={`flip-container ${showYear ? 'flipped' : ''}`}>
@@ -124,7 +94,7 @@ const HeroSection: React.FC = () => {
                 </div>
               </div>
             </div>
-            <span className="text-xl md:text-2xl text-muted">•</span>
+            <span className="text-lg xs:text-xl sm:text-2xl text-muted">•</span>
             <span>ALL IN</span>
           </div>
         </div>
