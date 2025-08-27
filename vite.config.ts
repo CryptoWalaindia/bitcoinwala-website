@@ -9,4 +9,19 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['lucide-react'],
   },
+  build: {
+    rollupOptions: {
+      output: {
+        assetFileNames: (assetInfo) => {
+          // Keep PDF files in root with original name
+          if (assetInfo.name && assetInfo.name.endsWith('.pdf')) {
+            return '[name][extname]'
+          }
+          // Other assets go to assets folder with hash
+          return 'assets/[name]-[hash][extname]'
+        }
+      }
+    }
+  },
+  assetsInclude: ['**/*.pdf']
 })
