@@ -78,12 +78,12 @@ const HeroSection: React.FC = () => {
         className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 sm:px-8 md:px-12 lg:px-16 pt-[60px] sm:pt-[70px] md:pt-[80px]"
       >
       <div className="w-full max-w-6xl mx-auto text-center -mt-20 sm:-mt-12 md:-mt-16">
-        {/* MISSION → responsive sizing to prevent cutoff */}
+        {/* MISSION → bigger but responsive */}
         <h1
           className="
-            text-5xl xs:text-6xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 
+            text-6xl xs:text-7xl sm:text-7xl md:text-8xl lg:text-8xl xl:text-9xl 
             uppercase tracking-wide sm:tracking-wider md:tracking-widest leading-tight mb-6 sm:mb-6 
-            animate-fade-in-up px-2 sm:px-0
+            animate-fade-in-up px-1 sm:px-0
             bg-gradient-to-b from-white via-neutral-200 to-neutral-400 text-transparent bg-clip-text
             drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] sm:drop-shadow-[0_0_18px_rgba(255,255,255,0.35)]
           "
@@ -91,9 +91,9 @@ const HeroSection: React.FC = () => {
           MISSION
         </h1>
 
-        {/* Subtitle in single line - improved mobile sizing */}
-        <div className="text-muted animate-fade-in-up delay-100 px-2 sm:px-4">
-          <div className="flex items-center justify-center gap-1 xs:gap-2 sm:gap-3 md:gap-4 text-xs xs:text-sm sm:text-lg md:text-xl lg:text-2xl tracking-wide sm:tracking-widest overflow-hidden">
+        {/* Subtitle in single line - desktop-like spacing */}
+        <div className="text-muted animate-fade-in-up delay-100 px-1 sm:px-4">
+          <div className="flex items-center justify-center gap-2 xs:gap-3 sm:gap-3 md:gap-4 text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl tracking-wide sm:tracking-widest overflow-hidden">
             <span className="flex-shrink-0">1 MILLION</span>
             <span className="text-orange-500 flex-shrink-0">BITCOIN</span>
             <div className={`flip-container ${showYear ? 'flipped' : ''} flex-shrink-0`}>
@@ -106,7 +106,7 @@ const HeroSection: React.FC = () => {
                 </div>
               </div>
             </div>
-            <span className="text-xs xs:text-sm sm:text-lg md:text-xl lg:text-2xl text-muted flex-shrink-0">•</span>
+            <span className="text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl text-muted flex-shrink-0">•</span>
             <span className="flex-shrink-0">ALL IN</span>
           </div>
         </div>
