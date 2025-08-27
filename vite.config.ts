@@ -13,9 +13,9 @@ export default defineConfig({
     rollupOptions: {
       output: {
         assetFileNames: (assetInfo) => {
-          // Keep PDF files in root with original name
+          // Keep PDF files with hash for cache busting
           if (assetInfo.name && assetInfo.name.endsWith('.pdf')) {
-            return '[name][extname]'
+            return 'assets/[name]-[hash][extname]'
           }
           // Other assets go to assets folder with hash
           return 'assets/[name]-[hash][extname]'

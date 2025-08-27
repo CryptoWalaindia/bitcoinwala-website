@@ -1,14 +1,14 @@
 // src/components/WhitepaperModal.tsx
 import React, { useEffect } from 'react'
 import { X } from 'lucide-react'
-// Import PDF as static asset to ensure it's included in build
-import whitepaperPdf from '/whitepaper.pdf?url'
+// Import PDF from assets folder to ensure it's bundled
+import whitepaperPdf from '../assets/whitepaper.pdf'
 
 type Props = { open: boolean; onClose: () => void }
 
 const WhitepaperModal: React.FC<Props> = ({ open, onClose }) => {
-  // Use imported PDF URL with fallback
-  const PDF_URL = whitepaperPdf || `${import.meta.env.BASE_URL}whitepaper.pdf`
+  // Use imported PDF URL
+  const PDF_URL = whitepaperPdf
 
   // ESC to close
   useEffect(() => {
