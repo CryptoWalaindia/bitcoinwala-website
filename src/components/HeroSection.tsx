@@ -25,14 +25,14 @@ const HeroSection: React.FC = () => {
           perspective: 1000px;
           display: inline-block;
           vertical-align: baseline;
-          width: 5ch;
+          width: 7ch;
           text-align: center;
           position: relative;
         }
         
         @media (min-width: 480px) {
           .flip-container {
-            width: 6ch;
+            width: 8ch;
           }
         }
         
@@ -96,7 +96,7 @@ const HeroSection: React.FC = () => {
           <div className="flex items-center justify-center gap-2 xs:gap-3 sm:gap-3 md:gap-4 text-sm xs:text-base sm:text-lg md:text-xl lg:text-2xl tracking-wide sm:tracking-widest overflow-hidden">
             <span className="flex-shrink-0">1 MILLION</span>
             <span className="text-orange-500 flex-shrink-0">BITCOIN</span>
-            <div className={`flip-container ${showYear ? 'flipped' : ''} flex-shrink-0`}>
+            <div className={`flip-container ${showYear ? 'flipped' : ''} flex-shrink-0 mx-1`}>
               <div className="flip-inner">
                 <div className="flip-front">
                   <span>5 YEARS</span>
