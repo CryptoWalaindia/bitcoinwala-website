@@ -25,9 +25,21 @@ const HeroSection: React.FC = () => {
           perspective: 1000px;
           display: inline-block;
           vertical-align: baseline;
-          width: 8ch;
+          width: 5ch;
           text-align: center;
           position: relative;
+        }
+        
+        @media (min-width: 480px) {
+          .flip-container {
+            width: 6ch;
+          }
+        }
+        
+        @media (min-width: 640px) {
+          .flip-container {
+            width: 8ch;
+          }
         }
         
         .flip-inner {
@@ -79,12 +91,12 @@ const HeroSection: React.FC = () => {
           MISSION
         </h1>
 
-        {/* Subtitle in single line */}
-        <div className="text-muted text-base xs:text-lg sm:text-lg md:text-xl lg:text-2xl tracking-wide sm:tracking-widest animate-fade-in-up delay-100">
-          <div className="flex items-center justify-center gap-2 xs:gap-3 sm:gap-4 whitespace-nowrap">
-            <span>1 MILLION</span>
-            <span className="text-orange-500">BITCOIN</span>
-            <div className={`flip-container ${showYear ? 'flipped' : ''}`}>
+        {/* Subtitle in single line - improved mobile sizing */}
+        <div className="text-muted animate-fade-in-up delay-100 px-2 sm:px-4">
+          <div className="flex items-center justify-center gap-1 xs:gap-2 sm:gap-3 md:gap-4 text-xs xs:text-sm sm:text-lg md:text-xl lg:text-2xl tracking-wide sm:tracking-widest overflow-hidden">
+            <span className="flex-shrink-0">1 MILLION</span>
+            <span className="text-orange-500 flex-shrink-0">BITCOIN</span>
+            <div className={`flip-container ${showYear ? 'flipped' : ''} flex-shrink-0`}>
               <div className="flip-inner">
                 <div className="flip-front">
                   <span>5 YEARS</span>
@@ -94,8 +106,8 @@ const HeroSection: React.FC = () => {
                 </div>
               </div>
             </div>
-            <span className="text-lg xs:text-xl sm:text-2xl text-muted">•</span>
-            <span>ALL IN</span>
+            <span className="text-xs xs:text-sm sm:text-lg md:text-xl lg:text-2xl text-muted flex-shrink-0">•</span>
+            <span className="flex-shrink-0">ALL IN</span>
           </div>
         </div>
       </div>
