@@ -5,13 +5,27 @@ import clsx from 'clsx'
 const CountdownSection: React.FC = () => {
   const calculateTimeLeft = () => {
     const now = new Date()
-    let targetTime = new Date(now)
-    targetTime.setHours(
-      now.getHours() + 24,
-      now.getMinutes(),
-      now.getSeconds(),
-      now.getMilliseconds()
-    )
+    
+    // Calculate next 6:00 PM IST
+    // IST is UTC+5:30, so 6:00 PM IST = 12:30 PM UTC
+    const getNext6PMIST = () => {
+      // Convert current time to IST
+      const nowIST = new Date(now.getTime() + (5.5 * 60 * 60 * 1000)) // Add 5.5 hours for IST
+      
+      // Set target to 6:00 PM IST today
+      let targetIST = new Date(nowIST)
+      targetIST.setHours(18, 0, 0, 0) // 6:00 PM IST
+      
+      // If 6:00 PM IST has already passed today, set it for tomorrow
+      if (nowIST >= targetIST) {
+        targetIST.setDate(targetIST.getDate() + 1)
+      }
+      
+      // Convert back to local time
+      return new Date(targetIST.getTime() - (5.5 * 60 * 60 * 1000))
+    }
+    
+    let targetTime = getNext6PMIST()
 
     const storedTarget = localStorage.getItem('countdownTarget')
     if (storedTarget) {
@@ -19,7 +33,8 @@ const CountdownSection: React.FC = () => {
       if (parsedTarget > now) {
         targetTime = parsedTarget
       } else {
-        localStorage.removeItem('countdownTarget')
+        // If stored target has passed, calculate next 6:00 PM IST
+        targetTime = getNext6PMIST()
         localStorage.setItem('countdownTarget', targetTime.toISOString())
       }
     } else {
@@ -28,13 +43,8 @@ const CountdownSection: React.FC = () => {
 
     const difference = +targetTime - +now
     if (difference <= 0) {
-      const newTarget = new Date(now)
-      newTarget.setHours(
-        now.getHours() + 24,
-        now.getMinutes(),
-        now.getSeconds(),
-        now.getMilliseconds()
-      )
+      // If somehow we reach 0, set next 6:00 PM IST
+      const newTarget = getNext6PMIST()
       localStorage.setItem('countdownTarget', newTarget.toISOString())
       return { hours: 24, minutes: 0, seconds: 0 }
     }
