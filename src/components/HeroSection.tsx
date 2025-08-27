@@ -78,12 +78,12 @@ const HeroSection: React.FC = () => {
         className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 sm:px-8 md:px-12 lg:px-16 pt-[60px] sm:pt-[70px] md:pt-[80px]"
       >
       <div className="w-full max-w-6xl mx-auto text-center -mt-20 sm:-mt-12 md:-mt-16">
-        {/* MISSION → brighter, glow, premium gradient - Made bigger for mobile */}
+        {/* MISSION → responsive sizing to prevent cutoff */}
         <h1
           className="
-            text-7xl xs:text-8xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 
-            uppercase tracking-wider sm:tracking-widest leading-tight mb-6 sm:mb-6 
-            animate-fade-in-up
+            text-5xl xs:text-6xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl 
+            uppercase tracking-wide sm:tracking-wider md:tracking-widest leading-tight mb-6 sm:mb-6 
+            animate-fade-in-up px-2 sm:px-0
             bg-gradient-to-b from-white via-neutral-200 to-neutral-400 text-transparent bg-clip-text
             drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] sm:drop-shadow-[0_0_18px_rgba(255,255,255,0.35)]
           "
