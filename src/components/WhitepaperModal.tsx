@@ -106,7 +106,7 @@ const WhitepaperModal: React.FC<Props> = ({ open, onClose }) => {
         >
         {/* Brand pill */}
         <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-          <span className="px-3 py-1 rounded-full text-[11px] tracking-wide bg-black/80 border border-[#1A1A1A]">
+          <span className="px-3 py-1 rounded-full text-[11px] tracking-wider bg-black/80 border border-[#1A1A1A]">
             BitcoinWala
           </span>
         </div>
@@ -139,7 +139,7 @@ const WhitepaperModal: React.FC<Props> = ({ open, onClose }) => {
           <section>
             <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">00</div>
             <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Abstract</h3>
-            <p className="mt-2 leading-7 text-[#F2F2F2]/90">
+            <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
               India’s first publicly listed Bitcoin treasury company. Our mandate is singular.
               Acquire Bitcoin and hold it as the primary reserve asset on our balance sheet.
             </p>
@@ -148,7 +148,7 @@ const WhitepaperModal: React.FC<Props> = ({ open, onClose }) => {
           <section>
             <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">01</div>
             <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Mission</h3>
-            <p className="mt-2 leading-7 text-[#F2F2F2]/90">
+            <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
               Hold 1,000,000 Bitcoin within five years. Every sat is publicly accounted,
               verifiable and audited.
             </p>
@@ -157,7 +157,7 @@ const WhitepaperModal: React.FC<Props> = ({ open, onClose }) => {
           <section>
             <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">02</div>
             <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Structure</h3>
-            <p className="mt-2 leading-7 text-[#F2F2F2]/90">
+            <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
               Buy Bitcoin. Hold it on our balance sheet. Never sell. We use no leverage, no lending,
               no rehypothecation, and no altcoin exposure. Operating liquidity comes from equity or
               debt at the holding company, not from selling Bitcoin.

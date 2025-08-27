@@ -147,7 +147,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
         >
         {/* Brand pill */}
         <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-          <span className="px-3 py-1 rounded-full text-[11px] tracking-wide bg-black/80 border border-[#1A1A1A]">
+          <span className="px-3 py-1 rounded-full text-[11px] tracking-wider bg-black/80 border border-[#1A1A1A]">
             BitcoinWala
           </span>
         </div>
@@ -178,7 +178,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
         {/* Success state */}
         {submitted ? (
           <div className="text-center space-y-4">
-            <p className="text-sm text-[#A0A0A0]">
+            <p className="text-sm text-[#A0A0A0] tracking-wider">
               Thanks! We’ve received your details. Our team will reach out shortly.
             </p>
             <button
@@ -193,7 +193,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
             <div className="flex items-center justify-center">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#F97316]"></div>
             </div>
-            <p className="text-sm text-[#A0A0A0]">
+            <p className="text-sm text-[#A0A0A0] tracking-wider">
               Processing your request...
             </p>
           </div>
@@ -207,7 +207,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
                   <label
                     key={opt}
                     className={clsx(
-                      'cursor-pointer select-none rounded-xl px-4 py-3 text-sm text-center uppercase tracking-wide',
+                      'cursor-pointer select-none rounded-xl px-4 py-3 text-sm text-center uppercase tracking-wider',
                       'border',
                       selected
                         ? 'border-white/30 bg-white/10'
@@ -242,7 +242,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
                   name="lastName"
                   placeholder="Last Name"
                   required
-                  className="w-full rounded-xl border border-[#1A1A1A] bg-black/25 px-4 py-3 text-sm placeholder-[#A0A0A0] focus:outline-none focus:ring-2 focus:ring-white/20"
+                  className="w-full rounded-xl border border-[#1A1A1A] bg-black/25 px-4 py-3 text-sm placeholder-[#A0A0A0] focus:outline-none focus:ring-2 focus:ring-white/20 tracking-wider"
                 />
               </div>
               <div>
@@ -251,7 +251,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
                   name="firstName"
                   placeholder="First Name"
                   required
-                  className="w-full rounded-xl border border-[#1A1A1A] bg-black/25 px-4 py-3 text-sm placeholder-[#A0A0A0] focus:outline-none focus:ring-2 focus:ring-white/20"
+                  className="w-full rounded-xl border border-[#1A1A1A] bg-black/25 px-4 py-3 text-sm placeholder-[#A0A0A0] focus:outline-none focus:ring-2 focus:ring-white/20 tracking-wider"
                 />
               </div>
             </div>
@@ -284,7 +284,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
             {/* CTA */}
             <button
               type="submit"
-              className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#F97316] px-5 py-3 text-sm font-semibold uppercase tracking-wide transition hover:bg-[#ff8a2a] focus-visible:outline-none"
+              className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#F97316] px-5 py-3 text-sm font-semibold uppercase tracking-wider transition hover:bg-[#ff8a2a] focus-visible:outline-none"
             >
               Subscribe
               <ArrowRight className="h-4 w-4" />

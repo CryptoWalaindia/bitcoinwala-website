@@ -84,7 +84,6 @@ const HeroSection: React.FC = () => {
           <div className="flex items-center justify-center gap-2 xs:gap-3 sm:gap-4 whitespace-nowrap">
             <span>1 MILLION</span>
             <span className="text-orange-500">BITCOIN</span>
-            <span className="text-lg xs:text-xl sm:text-2xl text-muted">•</span>
             <div className={`flip-container ${showYear ? 'flipped' : ''}`}>
               <div className="flip-inner">
                 <div className="flip-front">

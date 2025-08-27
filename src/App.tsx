@@ -291,15 +291,7 @@ function App() {
         </div>
       </div>
 
-      {/* Subtle Scroll Hint - Bottom Center (only on page 1) */}
-      {currentPage === 0 && (
-        <div className="fixed bottom-6 left-1/2 transform -translate-x-1/2 z-[997] pointer-events-none">
-          <div className="flex flex-col items-center space-y-2 text-white/40">
-            <div className="w-px h-8 bg-gradient-to-b from-transparent via-white/40 to-transparent" />
-            <div className="w-1 h-1 bg-white/40 rounded-full animate-pulse" />
-          </div>
-        </div>
-      )}
+
 
 
       <Header

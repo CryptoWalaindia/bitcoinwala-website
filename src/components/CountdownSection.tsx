@@ -54,7 +54,7 @@ const CountdownSection: React.FC = () => {
   const formatTime = (num: number) => String(num).padStart(2, '0')
 
   return (
-    <div className="w-full text-center px-6 sm:px-8 md:px-12 lg:px-16">
+    <div className="w-full text-center px-6 sm:px-8 md:px-12 lg:px-16 pt-20 sm:pt-24 md:pt-32 lg:pt-40">
       <p className="text-muted text-xs xs:text-sm sm:text-base md:text-lg uppercase tracking-wide sm:tracking-widest mb-8 sm:mb-10 animate-fade-in-up">
         Next Buying in
       </p>
@@ -103,6 +103,24 @@ const CountdownSection: React.FC = () => {
             </span>
           </div>
         ))}
+      </div>
+      
+      {/* Treasury Address */}
+      <div className="mt-8 sm:mt-10 md:mt-12 lg:mt-16">
+        <button className="inline-block px-4 py-2 rounded-full border border-neutral-800/50 bg-neutral-900/30 backdrop-blur-sm
+                          transition-all duration-300 ease-in-out
+                          hover:scale-110 hover:bg-neutral-800/40 hover:border-neutral-700/60
+                          hover:drop-shadow-[0_0_20px_rgba(255,255,255,0.15)]
+                          active:scale-105 cursor-pointer
+                          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500/50">
+          <p className="text-sm sm:text-base md:text-lg lg:text-xl tracking-wider animate-fade-in-up font-medium
+                        bg-gradient-to-r from-neutral-300 via-white to-neutral-300 text-transparent bg-clip-text
+                        drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]">
+            <span className="bg-gradient-to-r from-orange-400 to-orange-500 text-transparent bg-clip-text
+                             drop-shadow-[0_0_8px_rgba(251,146,60,0.3)]">bitcoin</span><span className="text-neutral-400">walatreasury.</span><span className="bg-gradient-to-r from-orange-400 to-orange-500 text-transparent bg-clip-text
+                             drop-shadow-[0_0_8px_rgba(251,146,60,0.3)]">btc</span>
+          </p>
+        </button>
       </div>
     </div>
   )

@@ -103,7 +103,7 @@ const AboutModal: React.FC<Props> = ({ open, onClose }) => {
         >
         {/* Brand pill */}
         <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-          <span className="px-3 py-1 rounded-full text-[11px] tracking-wide bg-black/80 border border-[#1A1A1A]">
+          <span className="px-3 py-1 rounded-full text-[11px] tracking-wider bg-black/80 border border-[#1A1A1A]">
             BitcoinWala
           </span>
         </div>
@@ -136,7 +136,7 @@ const AboutModal: React.FC<Props> = ({ open, onClose }) => {
           <section>
             <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">00</div>
             <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Foundation</h3>
-            <p className="mt-2 leading-7 text-[#F2F2F2]/90">
+            <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
               We believe Bitcoin is not just money — it is the foundation of a new financial era.
               Founded by Abrar Khan, an Emirates A380 Captain turned Bitcoin entrepreneur, BitcoinWala is built on a singular vision:
               to make India a global hub for Bitcoin adoption, education, and financial innovation.
@@ -146,7 +146,7 @@ const AboutModal: React.FC<Props> = ({ open, onClose }) => {
           <section>
             <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">01</div>
             <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Journey</h3>
-            <p className="mt-2 leading-7 text-[#F2F2F2]/90">
+            <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
               Abrar has been in the crypto space actively since 2015, witnessing first-hand the rise, challenges, and unstoppable growth of Bitcoin. 
               Flying across the world as an A380 Captain gave him a global perspective on how nations, institutions, and people view money. 
               But his mission remains rooted in India — to give every individual, from students to institutions, a direct pathway to Bitcoin.
@@ -156,7 +156,7 @@ const AboutModal: React.FC<Props> = ({ open, onClose }) => {
           <section>
             <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">02</div>
             <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Movement</h3>
-            <p className="mt-2 leading-7 text-[#F2F2F2]/90">
+            <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
               BitcoinWala is more than a company. It is a movement.
               We are building India's first publicly listed Bitcoin treasury, creating the simplest and safest way for Indians to gain Bitcoin exposure — 
               without wallets, without complexity, and with full transparency.
@@ -166,7 +166,7 @@ const AboutModal: React.FC<Props> = ({ open, onClose }) => {
           <section>
             <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">03</div>
             <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Strategy</h3>
-            <p className="mt-2 leading-7 text-[#F2F2F2]/90">
+            <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
               Our strategy is simple: Buy. Hold. Never Sell.
               With institutional-grade governance, proof of reserves, and radical transparency, we aim to hold 1 million by 2035, 
               making BitcoinWala India's largest Bitcoin reserve.
@@ -176,7 +176,7 @@ const AboutModal: React.FC<Props> = ({ open, onClose }) => {
           <section>
             <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">04</div>
             <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Mission</h3>
-            <p className="mt-2 leading-7 text-[#F2F2F2]/90">
+            <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
               This is not just about investment. It's about financial sovereignty, freedom, and building the future of money.
               Welcome to BitcoinWala. Welcome to the future.
             </p>
