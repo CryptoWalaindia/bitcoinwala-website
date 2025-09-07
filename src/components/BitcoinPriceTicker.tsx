@@ -184,8 +184,13 @@ const BitcoinPriceTicker: React.FC<BitcoinPriceTickerProps> = ({ compact = false
         )}
       </div>
       
-      {/* Tooltip on hover */}
-      <div className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 px-3 py-2 bg-black/90 backdrop-blur-sm rounded-lg border border-white/20 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap z-50">
+      {/* Tooltip on hover - Mobile: below ticker, Desktop: above ticker */}
+      <div className={clsx(
+        "absolute px-3 py-2 bg-black/90 backdrop-blur-sm rounded-lg border border-white/20 text-xs text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none z-[9999]",
+        compact 
+          ? "top-full mt-3 left-0 right-0 mx-2" // Mobile: below, full width with margins
+          : "bottom-full mb-2 left-1/2 transform -translate-x-1/2 whitespace-nowrap" // Desktop: above, centered
+      )}>
         <div className="text-center">
           <div className="text-orange-400 font-semibold font-mono tracking-wider">
             Bitcoin (BTC)
@@ -196,8 +201,10 @@ const BitcoinPriceTicker: React.FC<BitcoinPriceTickerProps> = ({ compact = false
           <div className="text-gray-300 mt-1 font-sans">24h Change: {formatChange(bitcoinData.changePercent24h)}</div>
           <div className="text-gray-400 text-xs mt-1 font-sans">Updated: {new Date(bitcoinData.lastUpdated).toLocaleTimeString()}</div>
         </div>
-        {/* Arrow */}
-        <div className="absolute -top-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-black/90 border-l border-t border-white/20 rotate-45"></div>
+        {/* Arrow - Only show on desktop */}
+        {!compact && (
+          <div className="absolute -bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-black/90 border-r border-b border-white/20 rotate-45"></div>
+        )}
       </div>
     </div>
   )
