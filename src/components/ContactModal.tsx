@@ -2,6 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { X, ArrowRight } from 'lucide-react'
 import clsx from 'clsx'
+import emailjs from '@emailjs/browser'
 
 interface ContactModalProps {
   open: boolean
@@ -16,6 +17,13 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
   const [audience, setAudience] = useState<AudienceType>('individual')
   const [submitted, setSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    phone: ''
+  })
 
   // Close on ESC
   useEffect(() => {
@@ -34,22 +42,65 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
     } else {
       setSubmitted(false)
       setIsSubmitting(false)
+      setError(null)
       setAudience('individual')
+      setFormData({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: ''
+      })
     }
   }, [open])
 
-  // Simple submit handler (replace with webhook later)
-  const onSubmit = (e: React.FormEvent) => {
+  // Handle form input changes
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  // EmailJS submit handler
+  const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
-    
-    // Add delay before showing thank you message
-    setTimeout(() => {
+    setError(null)
+
+    try {
+      // EmailJS configuration
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS configuration is missing. Please check your environment variables.')
+      }
+
+      // Prepare template parameters - matching EmailJS test format exactly
+      const templateParams = {
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        name: `${formData.firstName} ${formData.lastName}`,
+        from_email: formData.email,
+        phone: formData.phone,
+        audience_type: audience,
+        message: `New ${audience} contact form submission from BitcoinWala website.`
+      }
+
+      // Initialize EmailJS with public key
+      emailjs.init(publicKey)
+
+      // Send email using EmailJS
+      await emailjs.send(serviceId, templateId, templateParams)
+      
       setIsSubmitting(false)
       setSubmitted(true)
-    }, 1500) // 1.5 second delay
-    
-    // TODO: send to webhook / email here
+    } catch (error) {
+      console.error('EmailJS Error:', error)
+      setIsSubmitting(false)
+      setError('Failed to send message. Please try again or contact us directly.')
+    }
   }
 
   if (!open) return null
@@ -175,6 +226,13 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
           </p>
         </div>
 
+        {/* Error state */}
+        {error && (
+          <div className="mb-4 p-3 rounded-xl bg-red-500/10 border border-red-500/20">
+            <p className="text-sm text-red-400 text-center">{error}</p>
+          </div>
+        )}
+
         {/* Success state */}
         {submitted ? (
           <div className="text-center space-y-4">
@@ -241,6 +299,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
                   type="text"
                   name="lastName"
                   placeholder="Last Name"
+                  value={formData.lastName}
+                  onChange={handleInputChange}
                   required
                   className="w-full rounded-xl border border-[#1A1A1A] bg-black/25 px-4 py-3 text-sm placeholder-[#A0A0A0] focus:outline-none focus:ring-2 focus:ring-white/20 tracking-wider"
                 />
@@ -250,6 +310,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
                   type="text"
                   name="firstName"
                   placeholder="First Name"
+                  value={formData.firstName}
+                  onChange={handleInputChange}
                   required
                   className="w-full rounded-xl border border-[#1A1A1A] bg-black/25 px-4 py-3 text-sm placeholder-[#A0A0A0] focus:outline-none focus:ring-2 focus:ring-white/20 tracking-wider"
                 />
@@ -262,6 +324,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
                 type="email"
                 name="email"
                 placeholder="Email"
+                value={formData.email}
+                onChange={handleInputChange}
                 required
                 className="w-full rounded-xl border border-[#1A1A1A] bg-black/25 px-4 py-3 text-sm placeholder-[#A0A0A0] focus:outline-none focus:ring-2 focus:ring-white/20"
               />
@@ -273,6 +337,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
                 type="tel"
                 name="phone"
                 placeholder="Phone Number"
+                value={formData.phone}
+                onChange={handleInputChange}
                 inputMode="tel"
                 pattern="^[0-9+\\-\\s()]{6,}$"
                 title="Use digits, spaces, +, -, or ()"

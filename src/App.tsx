@@ -9,6 +9,7 @@ import WhitepaperModal from './components/WhitepaperModal'
 import ContactModal from './components/ContactModal'
 import AboutModal from './components/AboutModal'
 import MobileMenu from './components/MobileMenu'
+import './utils/emailTest' // Import email test utility
 
 function App() {
   const [isJoinUsBarVisible, setIsJoinUsBarVisible] = React.useState(false)
