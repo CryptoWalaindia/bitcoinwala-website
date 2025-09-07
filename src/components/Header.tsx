@@ -27,11 +27,15 @@ const Header: React.FC<HeaderProps> = ({ onOpenWhitepaper, onOpenContact, onOpen
           'transition-all duration-350 ease-in-out-custom'
         )}
       >
-        {/* LEFT: Spacer for mobile (to balance the layout) */}
-        <div className="sm:hidden w-10"></div>
-
-        {/* LEFT: Desktop Navigation (hidden on mobile) */}
-        <nav className="hidden sm:flex items-center gap-2 md:gap-4 lg:gap-6" role="navigation" aria-label="Primary">
+        {/* LEFT: Mobile Bitcoin Ticker + Desktop Navigation */}
+        <div className="flex items-center gap-2 sm:gap-4 md:gap-6">
+          {/* Mobile Bitcoin Price Ticker (left side) */}
+          <div className="block sm:hidden">
+            <BitcoinPriceTicker compact />
+          </div>
+          
+          {/* Desktop Navigation (hidden on mobile) */}
+          <nav className="hidden sm:flex items-center gap-2 md:gap-4 lg:gap-6" role="navigation" aria-label="Primary">
           <button
             type="button"
             onClick={onOpenWhitepaper}
@@ -51,7 +55,8 @@ const Header: React.FC<HeaderProps> = ({ onOpenWhitepaper, onOpenContact, onOpen
             <span className="absolute inset-0 -z-10 rounded-md bg-white/10 opacity-0 scale-95 transition-all duration-200 group-hover:opacity-100 group-hover:scale-105 group-hover:bg-white/15 group-hover:shadow-[0_8px_30px_rgba(0,0,0,0.35)]" />
             <span className="px-3 py-2.5 md:px-4 md:py-3 lg:px-6 lg:py-3">CONTACT US</span>
           </button>
-        </nav>
+          </nav>
+        </div>
 
         {/* CENTER: Logo */}
         <div className="absolute left-1/2 -translate-x-1/2">
@@ -64,12 +69,9 @@ const Header: React.FC<HeaderProps> = ({ onOpenWhitepaper, onOpenContact, onOpen
           </a>
         </div>
 
-        {/* RIGHT: Bitcoin Price Ticker + Mobile Menu Button + Desktop About Us */}
+        {/* RIGHT: Desktop Bitcoin Ticker + Mobile Menu Button + Desktop About Us */}
         <div className="ml-auto flex items-center gap-2 sm:gap-3 md:gap-4">
-          {/* Bitcoin Price Ticker - Compact on mobile, full on desktop */}
-          <div className="block sm:hidden">
-            <BitcoinPriceTicker compact />
-          </div>
+          {/* Desktop Bitcoin Price Ticker */}
           <div className="hidden sm:block">
             <BitcoinPriceTicker />
           </div>
