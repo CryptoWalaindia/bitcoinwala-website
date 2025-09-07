@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import clsx from 'clsx'
 import { Plus, X } from 'lucide-react'
 import logo from '../assets/bitcoinwala-logo.png'
+import BitcoinPriceTicker from './BitcoinPriceTicker'
 
 interface HeaderProps {
   onOpenWhitepaper?: () => void
@@ -63,8 +64,16 @@ const Header: React.FC<HeaderProps> = ({ onOpenWhitepaper, onOpenContact, onOpen
           </a>
         </div>
 
-        {/* RIGHT: Mobile Menu Button (visible only on mobile) + Desktop About Us */}
-        <div className="ml-auto flex items-center">
+        {/* RIGHT: Bitcoin Price Ticker + Mobile Menu Button + Desktop About Us */}
+        <div className="ml-auto flex items-center gap-2 sm:gap-3 md:gap-4">
+          {/* Bitcoin Price Ticker - Compact on mobile, full on desktop */}
+          <div className="block sm:hidden">
+            <BitcoinPriceTicker compact />
+          </div>
+          <div className="hidden sm:block">
+            <BitcoinPriceTicker />
+          </div>
+          
           {/* Mobile Menu Button */}
           <div className="sm:hidden">
             <button
