@@ -112,8 +112,8 @@ const HeroSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Bottom Edge Line stays pinned */}
-      <div className="absolute bottom-0 left-0 right-0 w-full border-t border-border py-4 sm:py-4 bg-background/80 backdrop-blur-sm">
+      {/* Bottom Edge Line - Adjusted for mobile browser UI */}
+      <div className="absolute bottom-16 sm:bottom-8 md:bottom-0 left-0 right-0 w-full border-t border-border py-4 sm:py-4 bg-background/80 backdrop-blur-sm">
         <div className="flex justify-center px-4">
           <span
             className="
