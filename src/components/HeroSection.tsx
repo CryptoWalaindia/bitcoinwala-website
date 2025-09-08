@@ -75,9 +75,9 @@ const HeroSection: React.FC = () => {
       <section
         id="hero"
         data-snap
-        className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 sm:px-8 md:px-12 lg:px-16 pt-[60px] sm:pt-[70px] md:pt-[80px]"
+        className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 sm:px-8 md:px-12 lg:px-16"
       >
-      <div className="w-full max-w-6xl mx-auto text-center -mt-20 sm:-mt-12 md:-mt-16">
+      <div className="w-full max-w-6xl mx-auto text-center">
         {/* MISSION → bigger but responsive */}
         <h1
           className="
