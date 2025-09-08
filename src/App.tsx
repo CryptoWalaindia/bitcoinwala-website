@@ -9,6 +9,9 @@ import WhitepaperModal from './components/WhitepaperModal'
 import ContactModal from './components/ContactModal'
 import AboutModal from './components/AboutModal'
 import MobileMenu from './components/MobileMenu'
+import BitcoinPriceTicker from './components/BitcoinPriceTicker'
+
+
 
 function App() {
   const [isJoinUsBarVisible, setIsJoinUsBarVisible] = React.useState(false)
@@ -264,8 +267,10 @@ function App() {
         <div className="split-bottom split-gradient-bottom" />
       </div>
 
-      {/* Subtle Scroll Indicators - Right Side */}
-      <div className="fixed right-6 top-1/2 transform -translate-y-1/2 z-[997] pointer-events-none">
+
+
+      {/* Subtle Scroll Indicators - Right Side (Hidden on mobile) */}
+      <div className="hidden sm:block fixed right-6 top-1/2 transform -translate-y-1/2 z-[997] pointer-events-none">
         <div className="flex flex-col space-y-3">
           {/* Page 1 Indicator */}
           <button

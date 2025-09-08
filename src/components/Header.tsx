@@ -27,13 +27,8 @@ const Header: React.FC<HeaderProps> = ({ onOpenWhitepaper, onOpenContact, onOpen
           'transition-all duration-350 ease-in-out-custom'
         )}
       >
-        {/* LEFT: Mobile Bitcoin Ticker + Desktop Navigation */}
+        {/* LEFT: Desktop Navigation */}
         <div className="flex items-center gap-2 sm:gap-4 md:gap-6">
-          {/* Mobile Bitcoin Price Ticker (left side) */}
-          <div className="block sm:hidden">
-            <BitcoinPriceTicker compact />
-          </div>
-          
           {/* Desktop Navigation (hidden on mobile) */}
           <nav className="hidden sm:flex items-center gap-2 md:gap-4 lg:gap-6" role="navigation" aria-label="Primary">
           <button

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useInterval } from 'react-use'
 import clsx from 'clsx'
+import BitcoinPriceTicker from './BitcoinPriceTicker'
 
 const CountdownSection: React.FC = () => {
   const calculateTimeLeft = () => {
@@ -65,6 +66,7 @@ const CountdownSection: React.FC = () => {
 
   return (
     <div className="w-full text-center px-6 sm:px-8 md:px-12 lg:px-16 pt-20 sm:pt-24 md:pt-32 lg:pt-40">
+      
       <p className="text-muted text-xs xs:text-sm sm:text-base md:text-lg uppercase tracking-wide sm:tracking-widest mb-8 sm:mb-10 animate-fade-in-up">
         Next Buying in
       </p>
