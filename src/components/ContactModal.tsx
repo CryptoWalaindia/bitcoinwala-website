@@ -376,7 +376,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
                 value={formData.phone}
                 onChange={handleInputChange}
                 inputMode="tel"
-                pattern="^[0-9+\\-\\s()]{6,}$"
+                pattern="[0-9+\-\s()]{6,}"
                 title="Use digits, spaces, +, -, or ()"
                 required
                 className="w-full rounded-xl border border-[#1A1A1A] bg-black/25 px-4 py-3 text-sm placeholder-[#A0A0A0] focus:outline-none focus:ring-2 focus:ring-white/20"
