@@ -8,6 +8,7 @@ import Footer from './components/Footer'
 import WhitepaperModal from './components/WhitepaperModal'
 import ContactModal from './components/ContactModal'
 import AboutModal from './components/AboutModal'
+import BitcoinMinaModal from './components/BitcoinMinaModal'
 import MobileMenu from './components/MobileMenu'
 import BitcoinPriceTicker from './components/BitcoinPriceTicker'
 
@@ -18,6 +19,7 @@ function App() {
   const [whitepaperOpen, setWhitepaperOpen] = React.useState(false)
   const [contactOpen, setContactOpen] = React.useState(false)
   const [aboutOpen, setAboutOpen] = React.useState(false)
+  const [bitcoinMinaOpen, setBitcoinMinaOpen] = React.useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
   const [currentPage, setCurrentPage] = React.useState(0)
 
@@ -27,7 +29,7 @@ function App() {
   const pageIndexRef = useRef(0)
   const lastTriggerAtRef = useRef(0)
 
-  useEffect(() => { modalOpenRef.current = whitepaperOpen || contactOpen || aboutOpen || mobileMenuOpen }, [whitepaperOpen, contactOpen, aboutOpen, mobileMenuOpen])
+  useEffect(() => { modalOpenRef.current = whitepaperOpen || contactOpen || aboutOpen || bitcoinMinaOpen || mobileMenuOpen }, [whitepaperOpen, contactOpen, aboutOpen, bitcoinMinaOpen, mobileMenuOpen])
 
   // ---------- helpers ----------
   const getHeaderOffset = () => {
@@ -131,10 +133,10 @@ function App() {
 
   // Pause background scroll when any modal is open
   useEffect(() => {
-    const anyOpen = whitepaperOpen || contactOpen || aboutOpen || mobileMenuOpen
+    const anyOpen = whitepaperOpen || contactOpen || aboutOpen || bitcoinMinaOpen || mobileMenuOpen
     if (anyOpen) { document.body.classList.add('modal-open'); lenisRef.current?.stop() }
     else { document.body.classList.remove('modal-open'); lenisRef.current?.start() }
-  }, [whitepaperOpen, contactOpen, aboutOpen, mobileMenuOpen])
+  }, [whitepaperOpen, contactOpen, aboutOpen, bitcoinMinaOpen, mobileMenuOpen])
 
   // ---------- STRICT 2-PAGE PAGER ----------
   useEffect(() => {
@@ -332,13 +334,15 @@ function App() {
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
         onOpenWhitepaper={() => setWhitepaperOpen(true)}
+        onOpenBitcoinMina={() => setBitcoinMinaOpen(true)}
         onOpenContact={() => setContactOpen(true)}
         onOpenAbout={() => setAboutOpen(true)}
       />
 
       <WhitepaperModal open={whitepaperOpen} onClose={() => setWhitepaperOpen(false)} />
       <ContactModal open={contactOpen} onClose={() => setContactOpen(false)} />
-      <AboutModal open={aboutOpen} onClose={() => setAboutOpen(false)} />
+      <AboutModal open={aboutOpen} onClose={() => setAboutOpen(false)} onOpenBitcoinMina={() => setBitcoinMinaOpen(true)} />
+      <BitcoinMinaModal open={bitcoinMinaOpen} onClose={() => setBitcoinMinaOpen(false)} />
     </div>
   )
 }

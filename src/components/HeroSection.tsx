@@ -110,6 +110,7 @@ const HeroSection: React.FC = () => {
             <span className="flex-shrink-0">ALL IN</span>
           </div>
         </div>
+
       </div>
 
       {/* Bottom Edge Line - Adjusted for mobile browser UI, extra space for iOS Safari */}
@@ -117,7 +118,7 @@ const HeroSection: React.FC = () => {
         <div className="flex justify-center px-4">
           <span
             className="
-              text-sm sm:text-sm md:text-sm lg:text-base text-neutral-300 
+              text-sm sm:text-sm md:text-sm lg:text-base text-neutral-300
               tracking-[0.15em] sm:tracking-[0.2em] md:tracking-[0.25em]
               font-light uppercase transition-colors duration-300
               hover:text-white text-center animate-fade-in-up

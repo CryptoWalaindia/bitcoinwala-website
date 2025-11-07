@@ -1,10 +1,10 @@
-// src/components/AboutModal.tsx
+// src/components/BitcoinMinaModal.tsx
 import React, { useEffect } from 'react'
 import { X } from 'lucide-react'
 
-type Props = { open: boolean; onClose: () => void; onOpenBitcoinMina?: () => void }
+type Props = { open: boolean; onClose: () => void }
 
-const AboutModal: React.FC<Props> = ({ open, onClose, onOpenBitcoinMina }) => {
+const BitcoinMinaModal: React.FC<Props> = ({ open, onClose }) => {
   // ESC to close
   useEffect(() => {
     if (!open) return
@@ -22,7 +22,7 @@ const AboutModal: React.FC<Props> = ({ open, onClose, onOpenBitcoinMina }) => {
   return (
     <>
       <style>{`
-        .about-modal-overlay {
+        .bitcoin-mina-modal-overlay {
           position: fixed !important;
           top: 0 !important;
           left: 0 !important;
@@ -40,8 +40,8 @@ const AboutModal: React.FC<Props> = ({ open, onClose, onOpenBitcoinMina }) => {
           overflow-y: auto !important;
           overscroll-behavior: contain !important;
         }
-        
-        .about-modal-content {
+
+        .bitcoin-mina-modal-content {
           position: relative !important;
           z-index: 99999 !important;
           width: 92vw !important;
@@ -56,8 +56,8 @@ const AboutModal: React.FC<Props> = ({ open, onClose, onOpenBitcoinMina }) => {
           display: flex !important;
           flex-direction: column !important;
         }
-        
-        .about-modal-close-btn {
+
+        .bitcoin-mina-modal-close-btn {
           position: absolute !important;
           right: 14px !important;
           top: 14px !important;
@@ -75,29 +75,29 @@ const AboutModal: React.FC<Props> = ({ open, onClose, onOpenBitcoinMina }) => {
           touch-action: manipulation !important;
           -webkit-tap-highlight-color: transparent !important;
         }
-        
-        .about-modal-close-btn:hover {
+
+        .bitcoin-mina-modal-close-btn:hover {
           background-color: rgba(255, 255, 255, 0.05) !important;
         }
-        
-        .about-modal-close-btn:active {
+
+        .bitcoin-mina-modal-close-btn:active {
           background-color: rgba(255, 255, 255, 0.1) !important;
           transform: scale(0.95) !important;
         }
       `}</style>
-      
+
       <div
-        className="about-modal-overlay"
+        className="bitcoin-mina-modal-overlay"
         role="dialog"
         aria-modal="true"
-        aria-labelledby="about-title"
+        aria-labelledby="bitcoin-mena-title"
         onMouseDown={onBackdropClick}
         onWheelCapture={(e) => e.stopPropagation()}
         onTouchMoveCapture={(e) => e.stopPropagation()}
         data-no-snap
       >
         <div
-          className="about-modal-content"
+          className="bitcoin-mina-modal-content"
           onClick={(e) => e.stopPropagation()}
           data-no-snap
         >
@@ -112,7 +112,7 @@ const AboutModal: React.FC<Props> = ({ open, onClose, onOpenBitcoinMina }) => {
         <button
           aria-label="Close"
           onClick={onClose}
-          className="about-modal-close-btn"
+          className="bitcoin-mina-modal-close-btn"
           data-no-snap
         >
           <X className="h-5 w-5 text-[#A0A0A0]" style={{ pointerEvents: 'none' }} />
@@ -121,94 +121,79 @@ const AboutModal: React.FC<Props> = ({ open, onClose, onOpenBitcoinMina }) => {
         {/* Header */}
         <div className="px-6 sm:px-7 pt-6 pb-4 text-center border-b border-white/10">
           <h2
-            id="about-title"
+            id="bitcoin-mena-title"
             className="text-[21px] sm:text-[23px] font-semibold tracking-[0.22em] uppercase text-[#F97316]"
           >
-            About Us
+            Bitcoin Mena
           </h2>
           <p className="mt-1.5 text-[13px] sm:text-[14px] text-[#A0A0A0]">
-           Indias 1st Publically listed Bitcoin Treasury. 
+            Discover the Future
           </p>
         </div>
 
         {/* Body (scrollable, scrollbar hidden) */}
         <div className="px-6 sm:px-7 pt-5 pb-6 space-y-6 flex-1 overflow-y-auto no-scrollbar">
-          {/* Founder Image */}
+          {/* Bitcoin Mena Image */}
           <div className="flex justify-center mb-6">
             <div className="relative w-full max-w-lg">
-              <img 
-                src="/abrar.png" 
-                alt="Abrar Khan - Founder of BitcoinWala" 
+              <img
+                src="/mena abrar.jpg"
+                alt="Bitcoin Mena"
                 className="w-full h-48 sm:h-56 md:h-64 rounded-lg object-cover border-2 border-[#F97316]/30 shadow-lg"
               />
               <div className="absolute inset-0 rounded-lg bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
           </div>
-          
+
           <section>
             <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">00</div>
-            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Foundation</h3>
+            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">About Abrar Khan</h3>
             <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
-              We believe Bitcoin is not just money — it is the foundation of a new financial era.
-              Founded by Abrar Khan, an Emirates A380 Captain turned Bitcoin entrepreneur, BitcoinWala is built on a singular vision:
-              to make India a global hub for Bitcoin adoption, education, and financial innovation.
+              I'm the Founder and CEO of BitcoinWala, a Bitcoin education and treasury initiative focused on making India a global Bitcoin leader.
+              I'm also a Captain with Emirates Airline, flying the Airbus A380 for almost 12 years now, after flying with four different airlines earlier in my career.
             </p>
           </section>
 
           <section>
             <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">01</div>
-            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Journey</h3>
+            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Mission</h3>
             <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
-              Abrar has been in the crypto space actively since 2015, witnessing first-hand the rise, challenges, and unstoppable growth of Bitcoin. 
-              Flying across the world as an A380 Captain gave him a global perspective on how nations, institutions, and people view money. 
-              But his mission remains rooted in India — to give every individual, from students to institutions, a direct pathway to Bitcoin.
+              Through BitcoinWala, my team and I have conducted hundreds of seminars, college sessions, and private events to educate people about Bitcoin —
+              reaching over 700,000 followers across social platforms and building one of the most active Bitcoin communities in Asia.
             </p>
           </section>
 
           <section>
             <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">02</div>
-            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Movement</h3>
+            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Building India's Bitcoin Treasury</h3>
             <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
-              BitcoinWala is more than a company. It is a movement.
-              We are building India's first publicly listed Bitcoin treasury, creating the simplest and safest way for Indians to gain Bitcoin exposure — 
-              without wallets, without complexity, and with full transparency.
+              We're now working on building India's Biggest Bitcoin Treasury company, modeled after Strategy with a long-term goal to accumulate Bitcoin
+              as a core reserve asset and inspire institutions to follow.
             </p>
           </section>
 
           <section>
             <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">03</div>
-            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Strategy</h3>
+            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Global Representation</h3>
             <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
-              Our strategy is simple: Buy. Hold. Never Sell.
-              With institutional-grade governance, proof of reserves, and radical transparency, we aim to hold 1 million by 2030, 
-              making BitcoinWala India's largest Bitcoin reserve.
+              I represent India's growing Bitcoin movement on the global stage with one mission — to see India lead the world in Bitcoin adoption
+              and financial freedom and Orange pill every Indian.
             </p>
-          </section>
-
-          <section>
-            <div className="text-[10px] uppercase tracking-[0.08em] text-[#F97316]">04</div>
-            <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Mission</h3>
-            <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
-              This is not just about investment. It's about financial sovereignty, freedom, and building the future of money.
-              Welcome to BitcoinWala. Welcome to the future.
-            </p>
+            <div className="mt-4">
+              <a
+                href="https://mena.b.tc/speaker/abrar-khan---bitcoinwala"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block px-5 py-3 rounded-xl bg-[#F97316] hover:bg-[#ff8a2a] text-[#F2F2F2] transition font-medium"
+              >
+                Visit Bitcoin Mena →
+              </a>
+            </div>
           </section>
         </div>
 
         {/* Footer */}
-        <div className="px-6 sm:px-7 pb-5 flex justify-between gap-3">
-          <button
-            onClick={() => {
-              if (onOpenBitcoinMina) {
-                onClose()
-                setTimeout(() => onOpenBitcoinMina(), 300)
-              }
-            }}
-            className="px-5 py-2 rounded-xl bg-[#F97316] hover:bg-[#ff8a2a] text-white transition font-medium"
-            data-no-snap
-          >
-            Bitcoin Mena
-          </button>
+        <div className="px-6 sm:px-7 pb-5 flex justify-end gap-3">
           <button
             onClick={onClose}
             className="px-4 py-2 rounded-xl border border-[#1A1A1A] text-[#A0A0A0] hover:bg-white/5 transition"
@@ -223,4 +208,4 @@ const AboutModal: React.FC<Props> = ({ open, onClose, onOpenBitcoinMina }) => {
   )
 }
 
-export default AboutModal
+export default BitcoinMinaModal
