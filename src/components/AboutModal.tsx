@@ -137,7 +137,7 @@ const AboutModal: React.FC<Props> = ({ open, onClose, onOpenBitcoinMina }) => {
           <div className="flex justify-center mb-6">
             <div className="relative w-full max-w-lg">
               <img 
-                src="/abrar.png" 
+                src="/abrar-founder.png" 
                 alt="Abrar Khan - Founder of BitcoinWala" 
                 className="w-full h-48 sm:h-56 md:h-64 rounded-lg object-cover border-2 border-[#F97316]/30 shadow-lg"
               />
