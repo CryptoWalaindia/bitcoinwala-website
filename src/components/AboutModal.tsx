@@ -2,9 +2,9 @@
 import React, { useEffect } from 'react'
 import { X } from 'lucide-react'
 
-type Props = { open: boolean; onClose: () => void; onOpenBitcoinMina?: () => void }
+type Props = { open: boolean; onClose: () => void }
 
-const AboutModal: React.FC<Props> = ({ open, onClose, onOpenBitcoinMina }) => {
+const AboutModal: React.FC<Props> = ({ open, onClose }) => {
   // ESC to close
   useEffect(() => {
     if (!open) return
@@ -196,22 +196,10 @@ const AboutModal: React.FC<Props> = ({ open, onClose, onOpenBitcoinMina }) => {
         </div>
 
         {/* Footer */}
-        <div className="px-6 sm:px-7 pb-5 flex justify-between gap-3">
-          <button
-            onClick={() => {
-              if (onOpenBitcoinMina) {
-                onClose()
-                setTimeout(() => onOpenBitcoinMina(), 300)
-              }
-            }}
-            className="px-5 py-2 rounded-xl bg-[#F97316] hover:bg-[#ff8a2a] text-white transition font-medium"
-            data-no-snap
-          >
-            Bitcoin Mena
-          </button>
+        <div className="px-6 sm:px-7 pb-5 flex justify-center">
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-xl border border-[#1A1A1A] text-[#A0A0A0] hover:bg-white/5 transition"
+            className="px-6 py-2 rounded-xl border border-[#1A1A1A] text-[#A0A0A0] hover:bg-white/5 transition"
             data-no-snap
           >
             Close

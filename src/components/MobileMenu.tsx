@@ -4,7 +4,6 @@ interface MobileMenuProps {
   isOpen: boolean
   onClose: () => void
   onOpenWhitepaper?: () => void
-  onOpenBitcoinMina?: () => void
   onOpenContact?: () => void
   onOpenAbout?: () => void
 }
@@ -13,7 +12,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
   isOpen,
   onClose,
   onOpenWhitepaper,
-  onOpenBitcoinMina,
   onOpenContact,
   onOpenAbout
 }) => {
@@ -115,14 +113,6 @@ const MobileMenu: React.FC<MobileMenuProps> = ({
               className="mobile-menu-button"
             >
               WHITEPAPER
-            </button>
-
-            <button
-              type="button"
-              onClick={() => handleMenuAction(onOpenBitcoinMina || (() => {}))}
-              className="mobile-menu-button"
-            >
-              BITCOIN MENA
             </button>
 
             <button
