@@ -150,7 +150,7 @@ const AboutModal: React.FC<Props> = ({ open, onClose }) => {
             <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Foundation</h3>
             <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
               We believe Bitcoin is not just money — it is the foundation of a new financial era.
-              Founded by Abrar Khan, an Emirates A380 Captain turned Bitcoin entrepreneur, BitcoinWala is built on a singular vision:
+              Founded by Abrar Khan, a Bitcoin entrepreneur, BitcoinWala is built on a singular vision:
               to make India a global hub for Bitcoin adoption, education, and financial innovation.
             </p>
           </section>
@@ -160,8 +160,8 @@ const AboutModal: React.FC<Props> = ({ open, onClose }) => {
             <h3 className="mt-1 font-semibold text-[15px] text-[#F97316]">Our Journey</h3>
             <p className="mt-2 leading-7 text-[#F2F2F2]/90 tracking-wider">
               Abrar has been in the crypto space actively since 2015, witnessing first-hand the rise, challenges, and unstoppable growth of Bitcoin. 
-              Flying across the world as an A380 Captain gave him a global perspective on how nations, institutions, and people view money. 
-              But his mission remains rooted in India — to give every individual, from students to institutions, a direct pathway to Bitcoin.
+              His global perspective on how nations, institutions, and people view money has shaped his approach to building BitcoinWala.
+              His mission remains rooted in India — to give every individual, from students to institutions, a direct pathway to Bitcoin.
             </p>
           </section>
 

@@ -1,13 +1,18 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL as string | undefined
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY as string | undefined
 
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables')
+// Lazily create the client only when credentials are present.
+// This prevents a hard crash on startup when env vars are missing.
+const getSupabaseClient = () => {
+  if (!supabaseUrl || !supabaseAnonKey) {
+    return null
+  }
+  return createClient(supabaseUrl, supabaseAnonKey)
 }
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+export const supabase = getSupabaseClient()
 
 // Type definitions for contact form submissions
 export interface ContactSubmission {
@@ -22,6 +27,12 @@ export interface ContactSubmission {
 
 // Function to save contact form submission to database
 export async function saveContactSubmission(data: ContactSubmission) {
+  if (!supabase) {
+    const msg = 'Supabase is not configured. Please add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY to your .env file.'
+    console.warn('⚠️', msg)
+    throw new Error(msg)
+  }
+
   const { data: result, error } = await supabase
     .from('contact_submissions')
     .insert([
